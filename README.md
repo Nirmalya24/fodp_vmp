@@ -1,2 +1,3 @@
-# fodp_vmp
-Friends of Discovery Park - Vegetation Management Platform
+# Friends of Discovery Park - Vegetation Management Platform
+
+This repo aims to create a minimum viable product of an online dashboard for vegetation management.
