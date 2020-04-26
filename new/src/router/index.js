@@ -16,6 +16,11 @@ const routes = [
     component: () => import( '../components/TablesPage.vue')
   },
   {
+    path: "/tables/:tablename",
+    name: 'show',
+    component: () => import( '../components/ShowTable.vue')
+  },
+  {
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../components/DashboardPage.vue'),

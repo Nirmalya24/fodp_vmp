@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="nav">
     <b-navbar toggleable="lg" type="dark" variant="info">
     <b-navbar-brand to="/">Friends of Discovery Park</b-navbar-brand>
 
@@ -45,3 +45,9 @@ export default {
   name: "NavBar"
 }
 </script>
+
+<style scoped>
+  #nav {
+    margin-bottom: 2em;
+  }
+</style>
