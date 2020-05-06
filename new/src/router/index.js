@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import( '../components/UserLogin.vue')
+  },
+  {
     path: '/tables',
     name: 'Tables',
     component: () => import( '../components/TablesPage.vue')

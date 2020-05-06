@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar toggleable="lg" type="dark">
     <b-navbar-brand to="/">Friends of Discovery Park</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -49,5 +49,6 @@ export default {
 <style scoped>
   #nav {
     margin-bottom: 2em;
+    background: #141414;
   }
 </style>
