@@ -3,12 +3,6 @@ const { pool } = require('./dbConfig.js')
 require('dotenv').config()
 // const Pool = require('pg').Pool
 
-// ;(async function() {
-//   const client = await pool.connect()
-//   await client.query('SELECT NOW()')
-//   client.release()
-// })()
-
 const userRegister = async (request, response) => {
   let {name, email, password, password2} = request.body
   console.log({name, email, password, password2})
@@ -38,7 +32,24 @@ const userRegister = async (request, response) => {
         if(err) {
           throw err
         }
-        console.log(results.rows)
+        if(results.rows.length > 0){
+          errors.push({message: 'Email already registered'})
+          response.render('register', {errors})
+        } else {
+          pool.query(
+            `INSERT INTO users (name, email, password)
+            VALUES ($1, $2, $3)
+            RETURNING id, password`, [name, email, hashedPassword], 
+            (err, results) => {
+              if(err){
+                throw err
+              }
+              console.log(results.rows)
+              request.flash('success_msg', 'You are now registered!')
+              response.redirect('/users/login')
+            }
+          )
+        }
       }
     )
   }
