@@ -63,9 +63,9 @@ export default {
     }
   },
   methods: {
-    login(evt) {
-      evt.preventDefault()
-      axios.post("http://httpbin.org/post", this.form) // TODO: change url to api
+    login(e) {
+      e.preventDefault()
+      axios.post("/api/login", this.form) // TODO: change url to api
         .then(res => JSON.parse(res.data.data)) // REMOVE - for testing
         .then(console.log)
         .catch(console.error);

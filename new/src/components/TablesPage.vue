@@ -25,7 +25,7 @@
                 :key="table.id">
                 <td>{{ table.tablename }}</td>
                 <td>
-                  <router-link :to="{name: 'show', params: {tableName: table.tablename} }">
+                  <router-link :to="{name: 'show', params: {tablename: table.tablename} }">
                     <b-button pill variant="success">Show</b-button>
                   </router-link>
                 </td>

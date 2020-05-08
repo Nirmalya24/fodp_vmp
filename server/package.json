@@ -2,20 +2,26 @@
   "name": "node-api-postgres",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^4.0.1",
+    "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-jwt": "^5.3.3",
     "jwks-rsa": "^1.8.0",
     "ogr2ogr": "^2.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "pg": "^8.0.2"
   },
   "devDependencies": {

@@ -13,7 +13,13 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import( '../components/UserLogin.vue')
+    component: () => import( '../components/UserLogin.vue'),
+    meta: { hideLoginOption: true }
+  },
+  {
+    path: '/user',
+    name: 'UserInfo',
+    component: () => import('../components/UserPage.vue')
   },
   {
     path: '/tables',

@@ -72,15 +72,6 @@ const deleteUser = (request, response) => {
   })
 }
 
-const getBirdData = (request, response) => {
-  pool.query('SELECT * FROM bird_data', (error, results) => {
-    if (error){
-      throw error
-    }
-    response.status(200).json(results.rows) 
-  })
-}
-
 const getTables = (request, response) => {
   pool.query('SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname != \'pg_catalog\' AND schemaname != \'information_schema\'',
     (error, results) => {
@@ -116,29 +107,7 @@ const tableQuery = (request, response) => {
   }
 }
 
-// const streamsTable = (request, response) => {
-//   pool.query('SELECT * FROM streams', (error, results) => {
-//     if(error){
-//       throw error
-//     }
-
-//     response.status(200).json(results.rows)
-
-//   })
-// }
-
-// const birdDataTable = (request, response) => {
-//   pool.query('SELECT * FROM streams', (error, results) => {
-//     if(error){
-//       throw error
-//     }
-
-//     response.status(200).json(results.rows)
-
-//   })
-// }
-
 module.exports = {
-  getUsers, getUserById, createUser, updateUser, deleteUser, getBirdData, getTables,
+  getUsers, getUserById, createUser, updateUser, deleteUser, getTables,
   tableQuery
 }
