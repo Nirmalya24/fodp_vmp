@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt')
 const { pool } = require('./dbConfig.js')
 require('dotenv').config()
-// const Pool = require('pg').Pool
 
 const userRegister = async (request, response) => {
   let {name, email, password, password2} = request.body
@@ -53,6 +52,10 @@ const userRegister = async (request, response) => {
       }
     )
   }
+}
+
+const userLogout = (request, response) => {
+  request.logOut()
 }
 
 module.exports = {

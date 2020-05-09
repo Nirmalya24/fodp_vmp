@@ -38,7 +38,9 @@ app.get("/users/register", (req, res) => {
   res.render("register");
 });
 app.get("/users/profile", (req, res) => {
-  res.render("profile", { user: "Nirmalya" });
+  console.log(req.isAuthenticated())
+  // res.send(req.user)
+  res.render("profile", { user: req.user.name });
 });
 app.post("/users/register", users.userRegister);
 app.post(
@@ -49,9 +51,15 @@ app.post(
     failureFlash: true,
   })
 );
-
+app.get('/users/logout', (req, res) => {
+  req.logOut()
+  req.flash("success_msg", "Logout successful")
+  res.redirect('/users/login')
+})
 app.get("/tables/", db.getTables);
 app.get("/tables/:table", db.tableQuery);
+
+app.get('/users', db.getUsers)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
