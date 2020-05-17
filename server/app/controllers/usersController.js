@@ -110,6 +110,17 @@ const siginUser = async (req, res) => {
   }
 };
 
+/**
+   * Profile
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} user object
+   */
+
+const profile = async(req, res) => {
+  
+}
+
 export {
   createUser,
   siginUser,

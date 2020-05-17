@@ -132,8 +132,6 @@ const updateUserToAdmin = async (req, res) => {
 const getUsers = async(req, res) => {
   const { is_admin } = req.user;
   console.log("Is admin? ", is_admin);
-  // console.log(`req.body: ${req.body} \n`);
-  // console.log(`req.user: ${req.user} \n`);
   if (is_admin === false) {
     errorMessage.error = 'Sorry You are unauthorized to view users';
     return res.status(status.bad).send(errorMessage);
@@ -155,8 +153,33 @@ const getUsers = async(req, res) => {
   }
 }
 
+/** 
+ * Displays the requested shapefiles
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} data table
+*/
+
+const getTable = async(req, res) => {
+  const { tableName } = req.params;
+  const { is_admin } = req.user;
+  if( is_admin === false || tableName == 'users') {
+    errorMessage.error = "Cannot access Data";
+    return res.status(status.bad).send(errorMessage);
+  }
+
+  const tableQuery = `SELECT * FROM ${tableName}`;
+  try {
+    const { rows } = await dbQuery.query(tableQuery);
+    return res.send(rows);
+  } catch(error) {
+    return res.status(status.notfound).sendStatus(status.notfound);
+  }
+}
+
 export {
   createAdmin,
   updateUserToAdmin,
-  getUsers
+  getUsers,
+  getTable
 };
