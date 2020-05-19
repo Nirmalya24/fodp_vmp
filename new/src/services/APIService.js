@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_ENDPOINT = "http://localhost:3000"
+const API_ENDPOINT = "http://localhost:5000"
 
 export default {
   getTables() {

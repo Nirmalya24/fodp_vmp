@@ -6,6 +6,10 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '*',
+    component: () => import('../components/404.vue'),
+  },
+  {
     path: '/',
     name: 'Home',
     component: Home
@@ -36,7 +40,14 @@ const routes = [
     name: 'Dashboard',
     component: () => import('../components/DashboardPage.vue'),
     meta: { hideNavigation: true }
+  },
+  {
+    path: '/maps',
+    name: 'Maps',
+    component: () => import('../components/MapsPage.vue'),
+    // meta: { hideNavigation: true }
   }
+
 ]
 
 const router = new VueRouter({
