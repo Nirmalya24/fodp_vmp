@@ -154,6 +154,33 @@ const getUsers = async(req, res) => {
 }
 
 /** 
+ * List of all the data tables
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} list of data tables
+*/
+
+const getTables = async(req, res) => {
+  const { is_admin } = req.user;
+  if( is_admin === false || tableName == 'users') {
+    errorMessage.error = "Cannot access Data";
+    return res.status(status.bad).send(errorMessage);
+  }
+
+  const tableQuery = `SELECT table_name
+    FROM information_schema.tables
+    WHERE table_schema = 'public'
+    ORDER BY table_name`;
+  try {
+    const { rows } = await dbQuery.query(tableQuery);
+    console.log(`${tableQuery} | ${rows.length}`);
+    return res.send(rows);
+  } catch(error) {
+    return res.status(status.notfound).sendStatus(status.notfound);
+  }
+}
+
+/** 
  * Displays the requested shapefiles
  * @param {object} req
  * @param {object} res
@@ -162,11 +189,11 @@ const getUsers = async(req, res) => {
 
 const getTable = async(req, res) => {
   const { tableName } = req.params;
-  const { is_admin } = req.user;
-  if( is_admin === false || tableName == 'users') {
-    errorMessage.error = "Cannot access Data";
-    return res.status(status.bad).send(errorMessage);
-  }
+  // const { is_admin } = req.user;
+  // if( is_admin === false || tableName == 'users') {
+  //   errorMessage.error = "Cannot access Data";
+  //   return res.status(status.bad).send(errorMessage);
+  // }
 
   const tableQuery = `SELECT * FROM ${tableName}`;
   try {
@@ -181,5 +208,6 @@ export {
   createAdmin,
   updateUserToAdmin,
   getUsers,
+  getTables,
   getTable
 };

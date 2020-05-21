@@ -27,7 +27,7 @@ app.use('/api/v1', adminRoute);
 
 app.listen(env.port).on('listening', () => {
   console.log(`${process.env.NODE_ENV} 🚀 are live on ${env.port}`);
-
+  console.log(process.env.TEST_DATABASE_URL_LOCALHOST);
 });
 
 
