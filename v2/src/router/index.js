@@ -5,38 +5,44 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    component: () => import('@/views/Index'),
+    path: "*",
+    component: () => import("@/views/404")
+  },
+  {
+    path: "/dashboard",
+    component: () => import("@/views/Index"),
     children: [
       // Dashboard
       {
-        name: 'Dashboard',
-        path: '',
-        component: () => import('@/views/dashboard/Home'),
+        name: "Dashboard",
+        path: "/home",
+        component: () => import("@/views/dashboard/DashboardHome")
       },
       // Tables
       {
-        name: 'Data Tables',
-        path: '/tables',
-        component: () => import('@/views/dashboard/Tables'),
+        name: "Data Tables",
+        path: "/tables",
+        component: () => import("@/views/dashboard/Tables")
       },
       // Maps
       {
-        name: 'Park Maps',
-        path: '/park-maps',
-        component: () => import('@/views/dashboard/ParkMaps'),
+        name: "Park Maps",
+        path: "/maps",
+        component: () => import("@/views/dashboard/ParkMaps")
       },
       // Report Forms
       {
-        name: 'Report Forms',
-        path: '/forms',
-        component: () => import('@/views/dashboard/ReportForms'),
-      },
-    ],
-  },
+        name: "Report Forms",
+        path: "/forms",
+        component: () => import("@/views/dashboard/ReportForms")
+      }
+    ]
+  }
 ];
 
 const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
   routes
 });
 

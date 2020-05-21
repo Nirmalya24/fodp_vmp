@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer app dark clipped src="../assets/drawback2.jpg">
+    <v-navigation-drawer app dark clipped src="../../assets/drawback2.jpg">
       <v-list dense nav class="px-5 pt-5">
         <v-list-item
           v-slot:default="{ active }"
@@ -55,7 +55,7 @@
     </v-navigation-drawer>
 
     <v-app-bar app clipped-left dark class="primary">
-      <v-img src="../assets/fodp-logo.png" max-width="300px" />
+      <v-img src="../../assets/fodp-logo.png" max-width="300px" />
 
       <v-divider class="mx-4" inset vertical></v-divider>
 
