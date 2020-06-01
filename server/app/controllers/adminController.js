@@ -162,7 +162,7 @@ const getUsers = async(req, res) => {
 
 const getTables = async(req, res) => {
   const { is_admin } = req.user;
-  if( is_admin === false || tableName == 'users') {
+  if( is_admin === false) {
     errorMessage.error = "Cannot access Data";
     return res.status(status.bad).send(errorMessage);
   }
