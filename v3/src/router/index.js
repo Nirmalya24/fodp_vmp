@@ -12,27 +12,37 @@ const routes = [
   {
     name: "HomePage",
     path: "/",
-    component: () => import("../components/HomePage")
+    component: () => import("@/components/HomePage")
   },
   {
     name: "Login",
     path: '/login',
-    component: () => import("../components/UserLogin")
+    component: () => import("@/components/UserLogin")
+  },
+  {
+    name: "Register",
+    path: "/register",
+    component: () => import("@/components/UserRegister")
+  },
+  {
+    name: "UserPage",
+    path: "/profile",
+    component: () => import("@/components/UserPage")
   },
   {
     name: "ForgotPassword",
     path: '/forgot',
-    component: () => import("../components/ForgotPassword")
+    component: () => import("@/components/ForgotPassword")
   },
   {
     path: "/dashboard",
-    component: () => import("../components/dashboard/DashboardHome"),
+    component: () => import("@/components/dashboard/DashboardHome"),
     children: [
       // Tables
       {
         name: "TablesPage",
         path: "tables",
-        component: () => import("../components/dashboard/TablesPage"),
+        component: () => import("@/components/dashboard/TablesPage"),
         children: [
           {
             name: "ShowTable",
@@ -46,13 +56,13 @@ const routes = [
       {
         name: "Maps",
         path: "maps",
-        component: () => import("../components/dashboard/ParkMaps")
+        component: () => import("@/components/dashboard/ParkMaps")
       },
       // Report Forms
       {
         name: "Report Forms",
         path: "forms",
-        component: () => import("../components/dashboard/ReportForms")
+        component: () => import("@/components/dashboard/ReportForms")
       }
     ]
   }
@@ -76,3 +86,5 @@ router.beforeEach((to, from, next) => {
   }
   next();
 });
+
+
